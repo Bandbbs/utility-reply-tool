@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <title>
+			Utility
+		</title> 
+  <link rel="stylesheet" href="https://static.cloudflare.ltd/mdui/1.0.2/css/mdui.min.css" /> 
+  <script src="https://static.cloudflare.ltd/mdui/1.0.2/js/mdui.min.js">
+		</script> 
+ </head> 
+ <body class="mdui-theme-accent-pink"> 
+  <div class="mdui-appbar"> 
+   <div class="mdui-tab mdui-color-indigo" mdui-tab=""> 
+    <a href="#mac_modify" class="mdui-ripple mdui-ripple-white"> MAC 地址修改回复 </a> 
+    <a href="#report_feedback" class="mdui-ripple mdui-ripple-white"> 举报回复 </a> 
+   </div> 
+  </div> 
+  <div class="mdui-container-fluid"> 
+   <div id="mac_modify"> 
+    <script type="text/javascript">
+function mac_modify_result_copy() {
+    var text = document.getElementById("mac_reply_tool_result");
+    text.value = "已修改为[ICODE]" + mac_text.value + "[/ICODE]\n\n请在表盘自定义工具内重新登录米坛社区帐号刷新MAC地址";
+    text.select();
+    document.execCommand("copy");
+}
+
+    function oCopy(obj){
+        obj.select();    // 选中输入框中的内容
+    }
+    
+    function mac_modify_copy(var1) {
+    var text = document.getElementById(var1);
+    text.select();
+    document.execCommand("copy");
+}
+				</script> 
+    <div class="mdui-row"> 
+     <div class="mdui-col-xs-12 mdui-col-md-4"> 
+      <div class="mdui-textfield mdui-textfield-floating-label"> 
+       <label class="mdui-textfield-label"> MAC地址 </label> 
+       <input class="mdui-textfield-input" onclick="oCopy(this)" type="text" id="mac_text" pattern="^([0-9a-fA-F]{2})(([/\s:][0-9a-fA-F]{2}){5})$"/> 
+       <div class="mdui-textfield-error">MAC地址不合法</div>
+      </div> 
+      <div class="mdui-textfield"> 
+       <label class="mdui-textfield-label"> 回复内容 </label> 
+       <textarea class="mdui-textfield-input" rows="3" id="mac_reply_tool_result"></textarea> 
+      </div> 
+             <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" onclick="mac_modify_result_copy()"> 复制 </button> 
+      <div class="mdui-textfield"> 
+        <textarea class="mdui-textfield-input" rows="3" id="mac_repeat_text">您申请修改的MAC地址与已绑定的相同&#10;&#10;如无法激活，请在表盘自定义工具内重新登录米坛社区帐号并检查MAC地址是否发生变化</textarea> 
+       </div> 
+               <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" onclick="mac_modify_copy('mac_repeat_text')"> 复制 </button> 
+       
+             <div class="mdui-textfield"> 
+        <textarea class="mdui-textfield-input" rows="1" id="support_ticket_repeat_text">重复工单，已处理 最终修改结果将以最后发起的工单为准</textarea> 
+       </div> 
+       <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" onclick="mac_modify_copy('support_ticket_repeat_text')"> 复制 </button> 
+      
+       <div class="mdui-textfield"> 
+        <textarea class="mdui-textfield-input" rows="1" id="support_ticket_change_mac">请参照 https://www.bandbbs.cn/threads/4463/ 申请修改MAC地址</textarea> 
+       </div> 
+       <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" onclick="mac_modify_copy('support_ticket_change_mac')"> 复制 </button> 
+      
+             <div class="mdui-textfield"> 
+        <textarea class="mdui-textfield-input" rows="1" id="support_ticket_check_mac">请参照 https://www.bandbbs.cn/threads/4281/ 查看你的设备MAC地址</textarea> 
+       </div> 
+       <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" onclick="mac_modify_copy('support_ticket_check_mac')"> 复制 </button> 
+      </div> 
+</div> 
+ </div>   
+
+   <div id="report_feedback"> 
+    <script type="text/javascript">
+function report_feedback_result_copy() {
+    var report_feedback_select = document.getElementsByName("report_feedback_context");
+    if (report_feedback_select[2].checked){
+       var  report_feedback_contex_result = "我们认为此信息没有违反我们的规则，因此并没有采取任何处理。";
+    } else if (report_feedback_select[0].checked && report_feedback_select[1].checked){
+        var  report_feedback_contex_result = "已采取 “删除” 并且 “封号” 处理。";
+    } else if (report_feedback_select[0].checked){
+        var  report_feedback_contex_result = "已采取 “删除” 处理。";
+    } else if (report_feedback_select[1].checked){
+        var  report_feedback_contex_result = "已采取 “封号” 处理。";
+    }
+  var text = document.getElementById("report_feedback_result");
+    text.value = report_feedback_user.value + ",\n\n我们已收到您对内容“" + report_feedback_url.value + "”的举报\n\n" + report_feedback_contex_result + "\n\n感谢您的反馈！";
+    text.select();
+    document.execCommand("copy");
+}
+
+    function report_feedback_copy(var1) {
+    var text = document.getElementById(var1);
+    text.select();
+    document.execCommand("copy");
+}
+				</script> 
+    <div class="mdui-row"> 
+     <div class="mdui-col-xs-12 mdui-col-md-4"> 
+      <div class="mdui-textfield mdui-textfield-floating-label"> 
+       <label class="mdui-textfield-label"> 用户名 </label> 
+       <input class="mdui-textfield-input" onclick="oCopy(this)" type="text" id="report_feedback_user" /> 
+      </div> 
+            <div class="mdui-textfield mdui-textfield-floating-label"> 
+       <label class="mdui-textfield-label"> URL </label> 
+       <input class="mdui-textfield-input" onclick="oCopy(this)" type="text" id="report_feedback_url" /> 
+      </div> 
+      <label class="mdui-checkbox">
+      <input type="checkbox" name="report_feedback_context" value="report_feedback_del"/>
+      <i class="mdui-checkbox-icon" ></i>删除  
+      </label>
+      <label class="mdui-checkbox">
+      <input type="checkbox" name="report_feedback_context" value="report_feedback_ban"/>
+      <i class="mdui-checkbox-icon"></i>封号  
+      </label>
+      <label class="mdui-checkbox">
+      <input type="checkbox" name="report_feedback_context" value="report_feedback_allow"/>
+      <i class="mdui-checkbox-icon"></i>无违规  
+      </label>
+
+      <div class="mdui-textfield"> 
+       <label class="mdui-textfield-label"> 回复内容 </label> 
+       <textarea class="mdui-textfield-input" rows="5" id="report_feedback_result"></textarea>
+       <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" onclick="report_feedback_result_copy()"> 复制 </button> 
+       <div class="mdui-textfield"> 
+        <textarea class="mdui-textfield-input" rows="1" id="report_feedback_title">举报反馈 - </textarea> 
+       </div> 
+       <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" onclick="report_feedback_copy('report_feedback_title')"> 复制 </button> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div>  
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> Copyright&copy;2015-2022 Rayzggz.all right reserved.  
+ </body>
+</html>
